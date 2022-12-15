@@ -3,6 +3,7 @@ import math # Used to calculate sqrt(2)
 
 # THIS IS OUR IMPLEMENTATION!!!
 from astar import astar 
+from djikstra import djikstra
 # NOT A LIBRARY!!!
 
 #  Dijkstra’s Algorithm on Nodes and Edges
@@ -51,7 +52,15 @@ graph_task_3_ext = {
     36: {36:0, 29:r2, 35:1, 30:1},
 }
 
-# Task 3
+# Task 4
 # Call using astar(graph, start, end, grid_dim)
+print(f'A* algorithm')
 grid_dim = (6,6)
 astar(graph_task_3_ext, 16, 32, grid_dim)
+print('_'*20)
+
+print(f'Djikstra algorithm')
+
+# Now compare to djikstra's
+djikstra(graph_task_3_ext, 16, 32)
+print('_'*20)

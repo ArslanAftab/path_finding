@@ -24,7 +24,7 @@ def djikstra(graph, start, end):
         # Add to visited set
         visited.add((cost, node, predecessor))
 
-        # print(f"I'm at node {node}")
+        print(f"I'm at node {node}")
         for neighbour in graph[node]:
             # Look at all unvisited neighbours
             if neighbour in visited:
@@ -34,7 +34,7 @@ def djikstra(graph, start, end):
             # f = g
             travel_dist = cost + graph[node][neighbour]
             
-            # print(f'{node} -> {neighbour}: {travel_dist}')
+            print(f'{node} -> {neighbour}: {travel_dist}')
 
             # Adjust cost when new cost is lower
             if travel_dist < distance[neighbour]:
@@ -42,8 +42,11 @@ def djikstra(graph, start, end):
                 pathway[neighbour] = node
                 heapq.heappush(front, (travel_dist, neighbour, node))
 
-        # print(f'Front: {front}')
-        # print(f'Visited: {visited}')
+        print(f'Front: {front}')
+        print(f'Visited: {visited}')
+
+        if node == end:
+            break
 
     print(f'\n\nShortest distances from {start}: {distance}')
     

@@ -25,7 +25,7 @@ def astar(graph, start, end, grid_dim):
         # Add to visited set
         visited.add((cost, node, predecessor))
 
-        # print(f"I'm at node {node}")
+        print(f"I'm at node {node}")
         for neighbour in graph[node]:
             # Look at all unvisited neighbours
             if neighbour in visited:
@@ -36,9 +36,10 @@ def astar(graph, start, end, grid_dim):
             travel_dist = cost + graph[node][neighbour]
             
             # f = g+h
-            adjustedCost = travel_dist + get_distance(neighbour, end, grid_dim)
-
-            # print(f'{node} -> {neighbour}: {travel_dist}')
+            dist_to_end = get_distance(neighbour, end, grid_dim)
+            adjustedCost = travel_dist + dist_to_end
+            print(f'Euclidean dist {neighbour} -> {end}: {dist_to_end}')
+            print(f'{node} -> {neighbour}: {travel_dist}')
 
             # Adjust cost when new cost is lower
             if adjustedCost < distance[neighbour]:
@@ -46,8 +47,11 @@ def astar(graph, start, end, grid_dim):
                 pathway[neighbour] = node
                 heapq.heappush(front, (adjustedCost, travel_dist, neighbour, node))
 
-        # print(f'Front: {front}')
-        # print(f'Visited: {visited}')
+        print(f'Front: {front}')
+        print(f'Visited: {visited}')
+
+        if node == end:
+            break
 
     print(f'\n\nShortest distances from {start}: {distance}')
     

@@ -22,4 +22,6 @@ graph_task_1 = {
 
 # Task 1
 # Call using djikstra(graph, start, end)
+print(f'Djikstra algorithm')
 djikstra(graph_task_1, 1, 5)
+print('_'*20)
